@@ -75,7 +75,7 @@
 #define SCHED_RR	2
 #define SCHED_BATCH	3
 #define SCHED_ISO	4
-#define SCHED_IDLEPRIO	5
+#define SCHED_IDLE	5
 #define SCHED_DEADLINE	6
 
 /* for loops */
@@ -98,7 +98,7 @@ char *TAB[] = {
 	"R: SCHED_RR",
 	"B: SCHED_BATCH",
 	"I: SCHED_ISO",
-	"D: SCHED_IDLEPRIO",
+	"D: SCHED_IDLE",
 	"E: SCHED_DEADLINE",
 	0
 };
@@ -201,7 +201,7 @@ int main(int ac, char **dc)
 			break;
 		case '5':
 		case 'D':
-			policy=SCHED_IDLEPRIO;
+			policy=SCHED_IDLE;
                         mode |= MODE_SETPOLICY;
 			break;
 		case '6':
@@ -827,7 +827,7 @@ void usage(void)
                "    -R -p PRIO            for SCHED_RR         only as root\n" \
                "    -B                    for SCHED_BATCH\n" \
                "    -I -p PRIO            for SCHED_ISO\n" \
-               "    -D                    for SCHED_IDLEPRIO\n" \
+               "    -D                    for SCHED_IDLE\n" \
 	       "    -E -t rt:dl[:pr]      for SCHED_DEADLINE   only as root\n" \
                "       [ -f sSDRO ]\n" \
                "\n" \
