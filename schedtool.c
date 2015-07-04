@@ -506,7 +506,7 @@ int parse_time(long *rtime, long *dline, long *priod, char *arg)
 		*priod=*dline;
 
 #ifdef DEBUG
-	printf("tmp_arg: %s -> rtime: %ld dline: %ld priod: %ld\n", arg, *rtime, *dline);
+	printf("tmp_arg: %s -> rtime: %ld dline: %ld priod: %ld\n", arg, *rtime, *dline, *priod);
 #endif
 
 	return str == NULL;
