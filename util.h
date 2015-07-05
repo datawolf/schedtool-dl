@@ -19,5 +19,5 @@
 
 inline static int mode_set(int x, int try)
 {
-	return((x & try) == try);
+        return((x & try) == try);
 }

@@ -10,8 +10,8 @@
  in glibc.
  */
 #include <linux/unistd.h>
-#define __NR_sched_setaffinity	241
-#define __NR_sched_getaffinity	242
+#define __NR_sched_setaffinity    241
+#define __NR_sched_getaffinity    242
 
 /*
  a nice macro to define the following:
@@ -37,43 +37,43 @@ _syscall3 (int, sched_getaffinity, pid_t, pid, unsigned int, len, unsigned long 
 
 /* XXX use the proper syscall numbers */
 #ifdef __x86_64__
-#define __NR_sched_setattr		314
-#define __NR_sched_getattr		315
+#define __NR_sched_setattr        314
+#define __NR_sched_getattr        315
 #endif
 
 #ifdef __i386__
-#define __NR_sched_setattr		351
-#define __NR_sched_getattr		352
+#define __NR_sched_setattr        351
+#define __NR_sched_getattr        352
 #endif
 
 #ifdef __arm__
-#define __NR_sched_setattr		380
-#define __NR_sched_getattr		381
+#define __NR_sched_setattr        380
+#define __NR_sched_getattr        381
 #endif
 
-#define SF_SIG_RORUN	2
-#define SF_SIG_DMISS	4
+#define SF_SIG_RORUN    2
+#define SF_SIG_DMISS    4
 
 struct sched_attr {
-	__u32 size;
-
-	__u32 sched_policy;
-	__u64 sched_flags;
-
-	/* SCHED_NORMAL, SCHED_BATCH */
-	__s32 sched_nice;
-
-	/* SCHED_FIFO, SCHED_RR */
-	__u32 sched_priority;
-
-	/* SCHED_DEADLINE */
-	__u64 sched_runtime;
-	__u64 sched_deadline;
-	__u64 sched_period;
+        __u32 size;
+        
+        __u32 sched_policy;
+        __u64 sched_flags;
+        
+        /* SCHED_NORMAL, SCHED_BATCH */
+        __s32 sched_nice;
+        
+        /* SCHED_FIFO, SCHED_RR */
+        __u32 sched_priority;
+        
+        /* SCHED_DEADLINE */
+        __u64 sched_runtime;
+        __u64 sched_deadline;
+        __u64 sched_period;
 };
 
 #define sched_getattr(pid, attr, size, flags) \
-	syscall(__NR_sched_getattr, pid, attr, size, flags)
+        syscall(__NR_sched_getattr, pid, attr, size, flags)
 
 #define sched_setattr(pid, attr, flags) \
-	syscall(__NR_sched_setattr, pid, attr, flags)
+        syscall(__NR_sched_setattr, pid, attr, flags)

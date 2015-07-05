@@ -29,33 +29,34 @@
 /* print ERROR: + given message + errormsg received via errno */
 void decode_error(char *fmt, ...)
 {
-	va_list args;
-
-	char *msg=NULL;
-	int tmp_errno=errno;
-
-	printf("ERROR: ");
-	va_start(args, fmt);
-	vprintf(fmt, args);
-	va_end(args);
-
-	if(errno) {
-		/* do our own errors */
-		if (errno == EINVAL) {
-			msg="value out of range / policy not implemented";
-			goto bail;
-		}
-
-		/* hu, can this be unsave ? */
-		msg=(char *)strerror(errno);
-
-		/* the strerror()-call went wrong */
-		if(errno != tmp_errno) {
-			msg="unknown error code, sorry";
-		}
-
-	bail:
-		printf(" - %s",msg);
-	}
+        va_list args;
+        
+        char *msg = NULL;
+        int tmp_errno = errno;
+        
+        printf("ERROR: ");
+        va_start(args, fmt);
+        vprintf(fmt, args);
+        va_end(args);
+        
+        if(errno) {
+                /* do our own errors */
+                if (errno == EINVAL) {
+                        msg = "value out of range / policy not implemented";
+                        goto bail;
+                }
+        
+                /* hu, can this be unsave ? */
+                msg = (char *)strerror(errno);
+        
+                /* the strerror()-call went wrong */
+                if(errno != tmp_errno) {
+                        msg ="unknown error code, sorry";
+                }
+        
+bail:
+                printf(" - %s",msg);
+        }
+        
         printf("\n");
 }
